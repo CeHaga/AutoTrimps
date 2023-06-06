@@ -952,7 +952,7 @@ function initializeAllSettings() {
     createSetting('Rmanageequality', 'Manage Equality', 'Manages Equality for you. Sets Equality to 0 on Slow enemies, and Autoscaling on for Fast enemies. ', 'boolean', 'false', null, 'Combat');
     createSetting('Rcalcfrenzy', 'Frenzy Calc', '<b>Experimental. </b><br>Adds frenzy to the calc. Be warned\, it will not farm as much with this on as it expects 100% frenzy uptime. ', 'boolean', 'false', null, 'Combat');
     createSetting('Rmutecalc', 'Mute Calc', 'What zone to start calculating Mutations at. 0 to disable.', 'value', '-1', null, 'Combat');
-    createSetting('LimitUnbalance', 'Limit Max Unbalance', 'Limit max unbalance for achievement. Default: 95', 'value', 95, null, 'Maps');
+    createSetting('LimitUnbalance', 'Limit Max Unbalance', 'Limit max unbalance for achievement. Default: 95', 'value', 95, null, 'Combat');
 
     //Scryer
 
