@@ -331,7 +331,7 @@ function autoMap() {
 
     //Unbalance Challenge
     if (game.global.challengeActive == "Balance") {
-        if (getPageSetting('LimitUnbalance') > -1 && game.challenges.Balance.balanceStacks > getPageSetting('LimitUnbalance')) {
+        if (getPageSetting('LimitUnbalance') > -1 && game.challenges.Balance.balanceStacks >= getPageSetting('LimitUnbalance')) {
             shouldDoMaps = true;
         }
     }
