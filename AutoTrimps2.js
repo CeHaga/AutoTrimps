@@ -43,7 +43,7 @@ changelogList.push({
     date: "11/02/2023",
     version: "v5.2.0",
     description: "<b>Trimps v5.9.0</b> Added Frigid to calc. Added Desolation AutoDeso. Added mutations to calc. ",
-    isNew: true
+    isNew: false
 });
 changelogList.push({
     date: "13/11/2022",
