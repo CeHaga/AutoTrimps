@@ -88,10 +88,10 @@ var advExtraMapLevels = 0;
 
 function testMapSpecialModController() {
     var a = [];
-    if (Object.keys(mapSpecialModifierConfig).forEach(function(o) {
-            var p = mapSpecialModifierConfig[o];
-            game.global.highestLevelCleared + 1 >= p.unlocksAt && a.push(p.abv.toLowerCase());
-        }), !(1 > a.length)) {
+    if (Object.keys(mapSpecialModifierConfig).forEach(function (o) {
+        var p = mapSpecialModifierConfig[o];
+        game.global.highestLevelCleared + 1 >= p.unlocksAt && a.push(p.abv.toLowerCase());
+    }), !(1 > a.length)) {
         var c = document.getElementById("advSpecialSelect");
         if (c) {
             if (59 <= game.global.highestLevelCleared) {
@@ -329,6 +329,13 @@ function autoMap() {
         }
     }
 
+    //Unbalance Challenge
+    if (game.global.challengeActive == "Balance") {
+        if (getPageSetting('LimitUnbalance') > -1 && game.challenges.Balance.balanceStacks > getPageSetting('LimitUnbalance')) {
+            shouldDoMaps = true;
+        }
+    }
+
     //Prestige
     if (shouldFarm && !needPrestige) {
         var capped = areWeAttackLevelCapped();
@@ -402,7 +409,7 @@ function autoMap() {
                 siphonMap = map;
         }
     }
-    var keysSorted = Object.keys(obj).sort(function(a, b) {
+    var keysSorted = Object.keys(obj).sort(function (a, b) {
         return obj[b] - obj[a];
     });
     var highestMap;
@@ -563,7 +570,7 @@ function autoMap() {
             }
         }
 
-        var voidArraySorted = voidArray.sort(function(a, b) {
+        var voidArraySorted = voidArray.sort(function (a, b) {
             return a.sortByDiff - b.sortByDiff;
         });
         for (var map in voidArraySorted) {
@@ -800,10 +807,10 @@ function autoMap() {
             wondersAmount > game.challenges.Experience.wonders &&
             game.global.world >= wondersFloorZ) {
             farmingWonder = true;
-            if (!game.global.mapsActive && game.global.mapsOwnedArray.filter(function(map) {
-                    return map.level == game.global.world && map.location != 'Bionic';
-                }).length >= 1) {
-                var mapID = game.global.mapsOwnedArray.find(function(map) {
+            if (!game.global.mapsActive && game.global.mapsOwnedArray.filter(function (map) {
+                return map.level == game.global.world && map.location != 'Bionic';
+            }).length >= 1) {
+                var mapID = game.global.mapsOwnedArray.find(function (map) {
                     return map.level == game.global.world && map.location != 'Bionic';
                 }).id;
                 selectedMap = mapID;
@@ -1201,7 +1208,7 @@ function RautoMap() {
             Rstorm(true);
         }
     }
-    
+
     //Desolation
     if (game.global.challengeActive == "Desolation") {
         Rdesofarm = (getPageSetting('Rdesoon') == true && game.global.world > 5 && (game.global.challengeActive == "Desolation" && getPageSetting('Rdesozone') > 0 && getPageSetting('RdesoHD') > 0 && getPageSetting('Rdesomult') > 0));
@@ -1268,7 +1275,7 @@ function RautoMap() {
             obj[map] = game.global.mapsOwnedArray[map].level;
         }
     }
-    var keysSorted = Object.keys(obj).sort(function(a, b) {
+    var keysSorted = Object.keys(obj).sort(function (a, b) {
         return obj[b] - obj[a];
     });
     var highestMap;
@@ -1363,7 +1370,7 @@ function RautoMap() {
             }
         }
 
-        var voidArraySorted = voidArray.sort(function(a, b) {
+        var voidArraySorted = voidArray.sort(function (a, b) {
             return a.sortByDiff - b.sortByDiff;
         });
         for (var map in voidArraySorted) {
@@ -1401,7 +1408,7 @@ function RautoMap() {
     if (!game.global.preMapsActive && game.global.mapsActive) {
         RmapRepeat(selectedMap, shouldDoHealthMaps, restartVoidMap);
     }
-    
+
     //Quest - no maps
     if (Rshoulddoquest == 6) selectedMap = "world";
 
@@ -1556,7 +1563,7 @@ function RautoMap() {
                 }
             }
 
-        //We created the map, selectedMap is the map we want
+            //We created the map, selectedMap is the map we want
         } else {
             selectMap(selectedMap);
             var themapobj = game.global.mapsOwnedArray[getMapIndex(selectedMap)];

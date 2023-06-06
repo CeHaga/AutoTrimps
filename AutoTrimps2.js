@@ -168,7 +168,7 @@ function mainLoop() {
     if (game.global.world != autoTrimpSettings.zonetracker) {
         autoTrimpSettings.zonetracker = game.global.world;
     }
-    
+
     //Universal Logic
     if (getPageSetting('AutoBoneChargeMax') != 0) autoBoneChargeWhenMax();
 
@@ -180,13 +180,13 @@ function mainLoop() {
             setScienceNeeded();
             autoLevelEquipment();
         }
-        
+
         //Heirloom Shield Swap Check
-		if (shieldEquipped !== game.global.ShieldEquipped.id) HeirloomShieldSwapped();
+        if (shieldEquipped !== game.global.ShieldEquipped.id) HeirloomShieldSwapped();
 
         //Core
         if (getPageSetting('AutoMaps') > 0 && game.global.mapsUnlocked) autoMap();
-	if (getPageSetting('automapsalways') == true && autoTrimpSettings.AutoMaps.value != 1) autoTrimpSettings.AutoMaps.value = 1;
+        if (getPageSetting('automapsalways') == true && autoTrimpSettings.AutoMaps.value != 1) autoTrimpSettings.AutoMaps.value = 1;
         if (getPageSetting('showautomapstatus') == true) updateAutoMapsStatus();
         if (getPageSetting('ManualGather2') == 1) manualLabor2();
         if (getPageSetting('TrapTrimps') && game.global.trapBuildAllowed && game.global.trapBuildToggled == false) toggleAutoTrap();
@@ -203,12 +203,12 @@ function mainLoop() {
 
         //Buildings
         if (!usingRealTimeOffline) {
-        if (getPageSetting('BuyBuildingsNew') === 0 && getPageSetting('hidebuildings') == true) buyBuildings();
-        else if (getPageSetting('BuyBuildingsNew') == 1) {
-            buyBuildings();
-            buyStorage();
-        } else if (getPageSetting('BuyBuildingsNew') == 2) buyBuildings();
-	}
+            if (getPageSetting('BuyBuildingsNew') === 0 && getPageSetting('hidebuildings') == true) buyBuildings();
+            else if (getPageSetting('BuyBuildingsNew') == 1) {
+                buyBuildings();
+                buyStorage();
+            } else if (getPageSetting('BuyBuildingsNew') == 2) buyBuildings();
+        }
         else if (getPageSetting('BuyBuildingsNew') == 3) buyStorage();
         if (getPageSetting('UseAutoGen') == true && game.global.world > 229) autoGenerator();
 
@@ -282,9 +282,9 @@ function mainLoop() {
         if (!usingRealTimeOffline) {
             RsetScienceNeeded();
         }
-        
+
         //Heirloom Shield Swap Check
-		if (shieldEquipped !== game.global.ShieldEquipped.id) HeirloomShieldSwapped();
+        if (shieldEquipped !== game.global.ShieldEquipped.id) HeirloomShieldSwapped();
 
         if (!(game.global.challengeActive == "Quest" && game.global.world > 5 && game.global.lastClearedCell < 90 && ([14, 24].indexOf(questcheck()) >= 0))) {
             if (getPageSetting('RBuyUpgradesNew') != 0) RbuyUpgrades();
@@ -293,7 +293,7 @@ function mainLoop() {
         //RCore
         if (getPageSetting('RAutoMaps') > 0 && game.global.mapsUnlocked) RautoMap();
         if (getPageSetting('Rshowautomapstatus') == true) RupdateAutoMapsStatus();
-	if (getPageSetting('Rautomapsalways') == true && autoTrimpSettings.RAutoMaps.value != 1) autoTrimpSettings.RAutoMaps.value = 1;
+        if (getPageSetting('Rautomapsalways') == true && autoTrimpSettings.RAutoMaps.value != 1) autoTrimpSettings.RAutoMaps.value = 1;
         if (getPageSetting('RManualGather2') == 1) RmanualLabor2();
         if (getPageSetting('RTrapTrimps') && game.global.trapBuildAllowed && game.global.trapBuildToggled == false) toggleAutoTrap();
         if (game.global.challengeActive == "Daily" && getPageSetting('buyradony') >= 1 && getDailyHeliumValue(countDailyWeight()) >= getPageSetting('buyradony') && game.global.b >= 100 && !game.singleRunBonuses.heliumy.owned) purchaseSingleRunBonus('heliumy');

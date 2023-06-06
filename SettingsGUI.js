@@ -919,7 +919,7 @@ function initializeAllSettings() {
     createSetting('Rhypocastle', 'Frozen Castle', 'What zone you wish you run frozen castle on to complete the challenge. Will run castle after voids so make sure thats set up right. ', 'value', '-1', null, 'Challenges');
     createSetting('Rhypovoids', 'After Voids', 'Only run Frozen castle after all voids have been completed. ', 'boolean', true, null, 'Challenges');
     createSetting('Rhypostorage', 'Storage', 'Turn this on to disable buying sheds unless you need more wood for your HF: Bonfire target price (AT AutoBuildings). Essentially this means you wont get accidently bonfires but you may lose out on smithies and shield prestiges. If you use vanilla autobuildings this setting is pointless. Disables AutoStorage until the first Bonfire farm zone that you reach during the challenge.', 'boolean', 'false', null, 'Challenges');
-    
+
     //Desolation
     createSetting('Rdesoon', 'Desolation', 'Turn on Desolation settings. This also controls the entireity of Desolation settings. If you turn this off it will not do anything in Desolation. ', 'boolean', 'false', null, 'Challenges');
     createSetting('Rdesozone', 'D: Zone', 'What zone to start D: H:D and D: Multiplier. ', 'value', '-1', null, 'Challenges');
@@ -952,7 +952,7 @@ function initializeAllSettings() {
     createSetting('Rmanageequality', 'Manage Equality', 'Manages Equality for you. Sets Equality to 0 on Slow enemies, and Autoscaling on for Fast enemies. ', 'boolean', 'false', null, 'Combat');
     createSetting('Rcalcfrenzy', 'Frenzy Calc', '<b>Experimental. </b><br>Adds frenzy to the calc. Be warned\, it will not farm as much with this on as it expects 100% frenzy uptime. ', 'boolean', 'false', null, 'Combat');
     createSetting('Rmutecalc', 'Mute Calc', 'What zone to start calculating Mutations at. 0 to disable.', 'value', '-1', null, 'Combat');
-
+    createSetting('LimitUnbalance', 'Limit Max Unbalance', 'Limit max unbalance for achievement. Default: 95', 'value', 95, null, 'Maps');
 
     //Scryer
 
@@ -1213,7 +1213,7 @@ function initializeAllSettings() {
 
     document.getElementById('Rchallengehidehypothermia').setAttribute('onclick', 'settingChanged("Rchallengehidehypothermia"), modifyParentNode("Rchallengehidehypothermia", "Rhypostorage")');
     modifyParentNode("Rchallengehidehypothermia", "Rhypostorage");
-    
+
     document.getElementById('Rchallengehidedeso').setAttribute('onclick', 'settingChanged("Rchallengehidedeso"), modifyParentNode("Rchallengehidedeso", "Rdesomult")');
     modifyParentNode("Rchallengehidedeso", "Rdesomult");
 
@@ -2211,7 +2211,7 @@ function updateCustomButtons() {
     radonon && getPageSetting('Rhypoon') == true ? turnOn("Rhypocastle") : turnOff("Rhypocastle");
     radonon && getPageSetting('Rhypoon') == true ? turnOn("Rhypovoids") : turnOff("Rhypovoids");
     radonon && getPageSetting('Rhypoon') == true ? turnOn("Rhypostorage") : turnOff("Rhypostorage");
-    
+
     //Desolation
     radonon ? turnOn("Rdesoon") : turnOff("Rdesoon");
     radonon && getPageSetting('Rdesoon') == true ? turnOn("Rdesozone") : turnOff("Rdesozone");
@@ -2304,7 +2304,7 @@ function updateCustomButtons() {
         turnOff("Rhypovoids");
         turnOff("Rhypostorage");
     }
-    
+
     if (getPageSetting('Rchallengehidedeso') == true) {
         turnOff("Rdesoon");
         turnOff("Rdesozone");
